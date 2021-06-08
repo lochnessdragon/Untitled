@@ -1,7 +1,7 @@
-cmake_minimum_required (VERSION 2.8.9)
+cmake_minimum_required(VERSION 2.8.9)
 
-project (GameEngine)
+project(Untitled)
 
-file(GLOB SOURCES "src/*.cpp")
+add_subdirectory(engine/)
 
-add_executable(GameEngine ${SOURCES})
+add_subdirectory(app/example/)
