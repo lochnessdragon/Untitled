@@ -1,1 +1,1 @@
-run = "cd build && cmake ../ && cmake --build . && ./GameEngine"
+run = "cd build && cmake ../ && cmake --build . && ./app/example/Example"
