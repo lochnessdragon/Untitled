@@ -9,7 +9,8 @@ namespace Untitled {
   {
     switch(RendererAPI::getAPI()) {
       case RendererAPI::API::OpenGL:
-        return std::unique_ptr<GraphicsContext>(dynamic_cast<std::unique_ptr<GraphicsContext>>(std::make_unique<OpenGLContext>().release()));
+        //auto context = std::make_unique<OpenGLContext>();
+        return std::make_unique<OpenGLContext>();
       default:
         UT_CORE_CRITICAL("We do not currently support that API.");
         exit(1);
