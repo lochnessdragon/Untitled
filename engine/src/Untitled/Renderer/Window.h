@@ -16,10 +16,13 @@ namespace Untitled {
   };
 
 
-  class UT_API Window : RenderTarget {
+  class UT_API Window : public RenderTarget {
   public:
-    Window();
+    Window(RenderTargetProps properties);
     ~Window();
+
+    void bind();
+    glm::vec2 getSize();
 
   private:
     static int WINDOW_COUNT;

@@ -6,7 +6,7 @@ project(Example)
 file(GLOB_RECURSE SOURCES "*.cpp")
 
 # include directories
-set(INC_DIRS ${CMAKE_SOURCE_DIR}/engine/src)
+set(INC_DIRS ${CMAKE_SOURCE_DIR}/engine/src ${CMAKE_SOURCE_DIR}/engine/lib/glad/include)
 
 # linked libraries
 set(LIBS GameEngine)

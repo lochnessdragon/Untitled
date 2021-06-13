@@ -8,7 +8,7 @@ namespace Untitled {
     public:
     OpenGLContext() {}
 
-    virtual void init() override;
-    virtual std::shared_ptr<std::vector<WindowHint>> getWindowHints() override;
+    void init() override;
+    std::shared_ptr<std::vector<WindowHint>> getWindowHints() override;
   };
 }

@@ -4,9 +4,9 @@
 #include "GraphicsContext.h"
 
 namespace Untitled {
-  Window::WINDOW_COUNT = 0;
+  int Window::WINDOW_COUNT = 0;
 
-  Window::Window()
+  Window::Window(RenderTargetProps properties)
   {
     glfwSetErrorCallback(glfwErrorCallback);
 
@@ -19,14 +19,16 @@ namespace Untitled {
     glfwDefaultWindowHints();
     std::shared_ptr<GraphicsContext> context = GraphicsContext::create();
     
-    auto contextHints = context.getWindowHints();
+    auto hints = context->getWindowHints();
 
-    for(WindowHint hint : hints) {
-      glfwSetWindowHint(hint.hint, hint.value);
+    //hints->emplace_back({GLFW_});
+
+    for(WindowHint hint : *hints) {
+      //glfwWindowHint(hint.hint, hint.value);
     }
 
-    windowHandle = glfwCreateWindow(640, 480, "Hello GLFW!", NULL, NULL);
-    if(!window) 
+    windowHandle = glfwCreateWindow(properties.width, properties.height, "Hello GLFW!", NULL, NULL);
+    if(!windowHandle) 
     {
       UT_CORE_CRITICAL("Failed to create window! Aborting!");
       exit(1);
@@ -48,5 +50,18 @@ namespace Untitled {
   void Window::glfwErrorCallback(int error, const char* description) 
   {
     UT_CORE_CRITICAL("[GLFW] Error #: {} Description: {}", error, description);
+  }
+
+  void Window::bind()
+  {
+
+  }
+
+  glm::vec2 Window::getSize() 
+  {
+    int width, height = 0;
+    glfwGetWindowSize(windowHandle, &width, &height);
+
+    return {width, height};
   }
 }

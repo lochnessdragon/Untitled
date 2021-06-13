@@ -4,7 +4,7 @@ project (GameEngine)
 
 # setup c++ flags and linked libraries
 set(CMAKE_CXX_FLAGS_INIT "-Wall -pedantic")
-set(LIBS fmt)
+set(LIBS fmt glfw)
 set(DEFINES UT_EXPORTS)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp" "lib/glad/src/*.c")
