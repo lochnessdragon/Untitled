@@ -1,0 +1,16 @@
+INCLUDE (CheckLibraryExists)
+
+# takes in a library name and example function and checks whether such library exists
+function(check_dependency library function)
+  message(STATUS "Checking dependency: ${library}")
+
+  CHECK_LIBRARY_EXISTS(${library} ${function} "" ${library}_EXISTS)
+  
+  if(${library}_EXISTS)
+    message(STATUS "${library} exists!")
+    unset(${library}_EXISTS)
+  else()
+    message(SEND_ERROR "Could not verify: ${library} was installed. Please check to make sure you have correctly installed this library.")
+  endif()
+
+endfunction()
