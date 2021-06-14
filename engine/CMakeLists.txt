@@ -6,10 +6,11 @@ project (GameEngine)
 
 # setup c++ flags and linked libraries
 set(CMAKE_CXX_FLAGS_INIT "-Wall -pedantic")
-set(LIBS glfw)
+set(LIBS fmt glfw)
 
-check_dependency(glfw glfwCreateWindow)
-# check_dependency(fmt assert_fail) -- fmt
+foreach(i ${LIBS})
+check_dependency(${i})
+endforeach()
 
 set(DEFINES UT_EXPORTS)
 

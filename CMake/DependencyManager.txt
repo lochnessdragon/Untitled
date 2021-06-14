@@ -1,16 +1,15 @@
-INCLUDE (CheckLibraryExists)
+# INCLUDE (CheckLibraryExists)
 
 # takes in a library name and example function and checks whether such library exists
-function(check_dependency library function)
+function(check_dependency library)
   message(STATUS "Checking dependency: ${library}")
 
-  CHECK_LIBRARY_EXISTS(${library} ${function} "" ${library}_EXISTS)
+  find_library(${library}_LIBRARY NAMES ${library} CMAKE_FIND_ROOT_PATH_BOTH)
   
-  if(${library}_EXISTS)
+  if(NOT ${library}_LIBRARY MATCHES "${library}_LIBRARY-NOTFOUND")
     message(STATUS "${library} exists!")
-    unset(${library}_EXISTS)
   else()
-    message(SEND_ERROR "Could not verify: ${library} was installed. Please check to make sure you have correctly installed this library.")
+    message(SEND_ERROR "Could not verify ${library} was installed. Please check to make sure you have correctly installed this library.")
   endif()
 
 endfunction()
