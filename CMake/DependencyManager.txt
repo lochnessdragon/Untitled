@@ -4,7 +4,7 @@
 function(check_dependency library)
   message(STATUS "Checking dependency: ${library}")
 
-  find_library(${library}_LIBRARY NAMES ${library} CMAKE_FIND_ROOT_PATH_BOTH)
+  find_library(${library}_LIBRARY NAMES ${library} lib${library} lib${library} lib${library}.a lib${library}.so lib${library}.dll lib${library}.dll.a PATHS $ENV{LIBRARY_PATH} CMAKE_FIND_ROOT_PATH_BOTH)
   
   if(NOT ${library}_LIBRARY MATCHES "${library}_LIBRARY-NOTFOUND")
     message(STATUS "${library} exists!")

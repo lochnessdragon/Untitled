@@ -12,6 +12,10 @@ int main() {
   */
 
   Untitled::Window window = Untitled::Window({640, 480});
+
+  while(true) {
+    
+  }
   
   return 0;
 }
